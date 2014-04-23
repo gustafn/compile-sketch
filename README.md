@@ -1,8 +1,9 @@
-This is a simple infrastructure to compile sketches on the Intel
-Galileo. Compiling sketches on the Intel Galileo is particular useful
-for clanton-full Linux installations based on eglibc (see e.g.
-http://www.malinov.com/Home/sergey-s-blog) where one installs a rich set
-of linux command on an SD card and boots the Galileo from there.
+This is a simple infrastructure to compile Arduino sketches on the
+Intel Galileo. Compiling sketches on the Intel Galileo is particular
+useful for clanton-full Linux installations based on eglibc (see e.g.
+http://www.malinov.com/Home/sergey-s-blog) where one installs a rich
+set of linux command on an SD card and boots the Galileo from this
+card.
 
 Background: By default, the Arduino IDE builds sources for ulibc, which
 are cross-compliled on a PC and downloaded via USB to the board. ulibc

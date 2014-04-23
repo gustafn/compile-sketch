@@ -70,10 +70,9 @@ int main(int argc, char * argv[])
 
 	setup();
 	for (;;) {
-
-	  fprintf(stderr, "call loop\n");
-		loop();
-		//if (serialEventRun) serialEventRun();
+	  //fprintf(stderr, "call loop\n");
+	  loop();
+	  //if (serialEventRun) serialEventRun();
 	}
 	return 0;
 }

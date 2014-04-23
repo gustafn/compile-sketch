@@ -5,13 +5,14 @@ http://www.malinov.com/Home/sergey-s-blog) where one installs a rich
 set of linux command on an SD card and boots the Galileo from this
 card.
 
-Background: By default, the Arduino IDE builds sources for ulibc, which
-are cross-compliled on a PC and downloaded via USB to the board. ulibc
-is very compact (necessary for the default tiny SPI-flash Linux), but it
-seems limited and is hard to debug (i run into problems with dynamic
-loading, ldd seems not available, etc.). Therefore, the full
-distributions use usually eglibc. The downside is that sketches compiled
-with ulibc can't be executed in an Linux based on eglibc.
+Background: By default, the Arduino IDE builds sketches for ulibc,
+which are cross-compliled on a PC and downloaded via USB to the
+board. ulibc is very compact (necessary for the default tiny SPI-flash
+Linux), but it seems limited and is hard to debug (i run into problems
+with dynamic loading, ldd seems not available, etc.). Therefore,
+clanton-full distributions use usually eglibc. The downside of using
+eglibc is that sketches compiled with Arduino IDE and ulibc can't be
+executed in such an environment.
 
 By compiling sketches directly on the Galileo under Linux, one can
 compile easily sketches with eglibc in a way natural for Linux

@@ -28,7 +28,7 @@ PS: I've developed this package to ease teaching IoT appliances based
 on the Intel Galileo board.
 
 
-== 1) Copy Sources of Libraries and Template for the Sketch to the SD Card
+# 1) Copy Sources of Libraries and Template for the Sketch to the SD Card #
 
     Copy libraries from the Arduino IDE for the Intel Galileo to the SD
     card, which is used for booting the Galileo. The libraries are quite
@@ -58,7 +58,7 @@ on the Intel Galileo board.
      - user libraries:      Documents/Arduino
 
 
-== 2) On Galileo, copy Template for the Sketch and insert Sketch Source 
+# 2) On Galileo, copy Template for the Sketch and insert Sketch Source #
 
     Start the Galileo from the prepared SD card and log in (e.g. via
     ssh). Assume, you want to compile the sketch "Blink.ino". First copy
@@ -82,7 +82,7 @@ on the Intel Galileo board.
     Makefile for an example.
 
 
-== 3) Compile and Run the Sketch
+# 3) Compile and Run the Sketch #
 
     To compile the sketch, run
 

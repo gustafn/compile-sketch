@@ -7,15 +7,24 @@
 #
 SKETCH=
 
-# Optionally, add user libraries:
+# Optionally, add additional includes and user libraries:
 EXTRA_INCLUDES=
 EXTRA_VPATH=
 EXTRA_TARGET=
 
-# Example:
+#
+# Example for adding local user library (AdafruitBMP085)
+#
 # EXTRA_INCLUDES=-I${LOCAL}/AdafruitBMP085/
 # EXTRA_VPATH=${LOCAL}/AdafruitBMP085/
 # EXTRA_TARGET=Adafruit_BMP085.o
+
+#
+# Example for adding shipped library LiquidCrystal with sample sketches:
+#
+# EXTRA_INCLUDES=-I${LIBS}/LiquidCrystal/src/
+# EXTRA_VPATH=${LIBS}/LiquidCrystal/src/
+# EXTRA_TARGET=LiquidCrystal.o
 
 #
 # There should be no need to edit below
@@ -29,7 +38,10 @@ LOCAL=/media/realroot/arduino-local/libraries/
 INCLUDES=-I${ARDUINO} -I${FAB} -I${LIBRARIES}/Wire ${EXTRA_INCLUDES}
 FLAGS=-c -g -Os -w -ffunction-sections -fdata-sections -march=i586 -m32 -DARDUINO=153
 
-OFILES=main.o i2c.o fast_gpio_sc.o interrupt.o mux.o sysfs.o trace.o wiring_analog.o wiring_digital.o IPAddress.o Print.o RingBuffer.o Stream.o TTYUART.o UtilTime.o WMath.o WString.o variant.o Wire.o ${EXTRA_TARGET}
+OFILES=main.o i2c.o fast_gpio_sc.o interrupt.o mux.o sysfs.o trace.o \
+	wiring_analog.o wiring_digital.o IPAddress.o Print.o RingBuffer.o \
+	Stream.o TTYUART.o UtilTime.o WMath.o WString.o variant.o Wire.o \
+	${EXTRA_TARGET}
 
 VPATH = ${ARDUINO}:${FAB}:${LIBRARIES}/Wire:${EXTRA_VPATH}
 

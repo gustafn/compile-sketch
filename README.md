@@ -6,7 +6,7 @@ set of linux command on an SD card and boots the Galileo from this
 card.
 
 Background: By default, the Arduino IDE builds sketches for ulibc,
-which are cross-compliled on a PC and downloaded via USB to the
+which are cross-compiled on a PC and downloaded via USB to the
 board. ulibc is very compact (necessary for the default tiny SPI-flash
 Linux), but it seems limited and is hard to debug (i run into problems
 with dynamic loading, ldd seems not available, etc.). Therefore,
@@ -34,15 +34,19 @@ on the Intel Galileo board.
 
     Copy libraries from the Arduino IDE for the Intel Galileo to the SD
     card, which is used for booting the Galileo. The libraries are quite
-    small (total of less the 1.5 MB).
+    small (total of less the 1.5 MB) without arduino-libs (which are optional)
 
     Copy always the standard libraries (hardware/arduino); in case you
-    have user-installed libraries, copy these as well. Let us assume,
-    the SD card has the label GALILEO, one can use the following command
-    under Mac OS X:
+    have user-installed libraries, copy these as well. Optionally,
+    the shipped Arduino examples for the Galileo can be copied (called
+    here arduino-libs).
+
+    Let us assume, the SD card has the label GALILEO, one can use the
+    following command under Mac OS X:
 
        cp -r /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino /Volumes/GALILEO/arduino
        cp -r ~/Documents/Arduino /Volumes/GALILEO/arduino-local
+       cp -r /Applications/Arduino.app/Contents/Resources/Java/libraries /Volumes/GALILEO/arduino-libs
 
     Copy sketch template as well:
 

@@ -43,14 +43,17 @@ on the Intel Galileo board.
 
     Let us assume, the SD card has the label GALILEO, one can use the
     following command under Mac OS X:
+	
+	   ARDUINO=/Applications/Arduino.app
+       VOLUME=/Volumes/GALILEO
 
-       cp -r /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino /Volumes/GALILEO/arduino
-       cp -r ~/Documents/Arduino /Volumes/GALILEO/arduino-local
-       cp -r /Applications/Arduino.app/Contents/Resources/Java/libraries /Volumes/GALILEO/arduino-libs
+	   cp -r "${ARDUINO}/Contents/Resources/Java/hardware/intel/i586-uclibc" ${VOLUME}/i586-uclibc 
+       cp -r ~/Documents/Arduino ${VOLUME}/arduino-local
+       cp -r "${ARDUINO}/Contents/Resources/Java/libraries" ${VOLUME}/arduino-libs
 
     Copy sketch template as well:
 
-       cp sketch-template /Volumes/GALILEO/sketch-template
+       cp -r sketch-template ${VOLUME}/sketch-template
 
     For other operating systems you should find these libraries on the
     listed places:
@@ -67,11 +70,14 @@ on the Intel Galileo board.
 # 2) On Galileo, copy Template for the Sketch and insert Sketch Source #
 
     Start the Galileo from the prepared SD card and log in (e.g. via
-    ssh). Assume, you want to compile the sketch "Blink.ino". First copy
-    the sketch-template to a new folder used for your project (e.g.
-    blink-sketch).
+    ssh). Copy the "VOLUME" content to some directory or use the
+	Volume directly. Assume, you want to compile the sketch
+	"Blink.ino". First copy the sketch-template to a new folder
+	used for your project (e.g. blink-sketch).
 
-       cp -r /media/realroot/sketch-template ./blink-sketch
+       VOLUME=/media/realroot
+
+       cp -r ${VOLUME}/sketch-template ./blink-sketch
        cd ./blink-sketch
 
     Edit in Makefile and set the variable SKETCH to the name of your sketch.
@@ -82,7 +88,7 @@ on the Intel Galileo board.
     Copy the Blink sketch "Blink.ino" to this directory. You will find
     the .ino file in the Arduino tree. Alternatively, simply edit a new
     file named "Blink.ino" and paste the source from the Arduino IDE into
-    the editor.
+    the editor. You might want to adjust some paths in the Makefile.
 
     For larger projects, you might want to add user libraries. See
     Makefile for an example.

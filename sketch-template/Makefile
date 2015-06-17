@@ -15,9 +15,9 @@ EXTRA_TARGET=
 #
 # Example for adding local user library (AdafruitBMP085)
 #
-# EXTRA_INCLUDES=-I${LOCAL}/AdafruitBMP085/
-# EXTRA_VPATH=${LOCAL}/AdafruitBMP085/
-# EXTRA_TARGET=Adafruit_BMP085.o
+#EXTRA_INCLUDES=-I${LOCAL}/Adafruit_BMP085/
+#EXTRA_VPATH=${LOCAL}/Adafruit_BMP085/
+#EXTRA_TARGET=Adafruit_BMP085.o
 
 #
 # Example for adding shipped library LiquidCrystal with sample sketches:
@@ -26,25 +26,37 @@ EXTRA_TARGET=
 # EXTRA_VPATH=${LIBS}/LiquidCrystal/src/
 # EXTRA_TARGET=LiquidCrystal.o
 
+VOLUME=/media/realroot/arduino/
+VOLUME=/home/root/src/
+
+#HW=${VOLUME}/arduino/x86/
+HW=${VOLUME}/i586-uclibc/
+
+# Galileo 1
+FAB=${HW}/variants/galileo_fab_d/
+# Galileo Gen2
+FAB=${HW}/variants/galileo_fab_g/
+
 #
 # There should be no need to edit below
 #
 
-ARDUINO=/media/realroot/arduino/x86/cores/arduino/
-LIBRARIES=/media/realroot/arduino/x86/libraries/
-FAB=/media/realroot/arduino/x86/variants/galileo_fab_d/
-LOCAL=/media/realroot/arduino-local/libraries/
+ARDUINO=${HW}/cores/arduino/
+LIBRARIES=${HW}/libraries/
+LOCAL=${VOLUME}/arduino-local/libraries/
 
-INCLUDES=-I${ARDUINO} -I${FAB} -I${LIBRARIES}/Wire ${EXTRA_INCLUDES}
+INCLUDES=-I${ARDUINO} -I${FAB} -I${LIBRARIES}/Wire/src ${EXTRA_INCLUDES}
 FLAGS=-c -g -Os -w -ffunction-sections -fdata-sections -march=i586 -m32 -DARDUINO=153
 
-OFILES=main.o i2c.o fast_gpio_sc.o interrupt.o mux.o sysfs.o trace.o \
-	wiring_analog.o wiring_digital.o IPAddress.o Print.o RingBuffer.o \
+OFILES=main.o i2c.o interrupt.o mux.o sysfs.o trace.o \
+	fast_gpio_common.o fast_gpio_sc.o fast_gpio_nc.o \
+	IPAddress.o Print.o RingBuffer.o \
 	Stream.o TTYUART.o UtilTime.o WMath.o WString.o variant.o \
+	wiring_digital.o wiring_analog.o \
 	SPI.o Wire.o \
 	${EXTRA_TARGET}
 
-VPATH = ${ARDUINO}:${FAB}:${LIBRARIES}/SPI:${LIBRARIES}/Wire:${EXTRA_VPATH}
+VPATH = ${ARDUINO}:${FAB}:${LIBRARIES}/SPI/src:${LIBRARIES}/Wire/src:${EXTRA_VPATH}
 
 .c.o:
 	gcc -g ${FLAGS} ${INCLUDES} $<
